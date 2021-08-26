@@ -5,7 +5,7 @@ import { getRandomFloat, doRequest } from '../index.js';
 const gameProgression = (name) => {
   for (let i = 0; i < 3; i += 1) {
     const progressionStep = getRandomFloat(1, 15);
-    const progressionLength = getRandomFloat(5, 10);
+    const progressionLength = getRandomFloat(6, 12);
     const hiddenNum = getRandomFloat(0, progressionLength - 1);
     const question = [getRandomFloat(0, 25)];
     for (let index = 0; index < progressionLength; index += 1) {
