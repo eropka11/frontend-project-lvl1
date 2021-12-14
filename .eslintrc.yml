@@ -6,7 +6,6 @@ extends:
 parserOptions:
   ecmaVersion: 12
   sourceType: module
-rules: {
-  'no-console': 'off',
-  'import/no-unresolved': 'off',
-}
+rules: 
+  no-console: off
+  import/extensions: off
