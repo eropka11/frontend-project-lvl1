@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-expressions */
-import { getRandomFloat, doRequest } from '../index.js';
+import { getRandomFloat, doRequest, isWrong } from '../index.js';
 
 const gameEven = (name) => {
   for (let i = 0; i < 3; i += 1) {
@@ -10,9 +10,7 @@ const gameEven = (name) => {
     const answer = doRequest('Your answer: ');
     let rightAnswer = '';
     random % 2 === 0 ? rightAnswer = 'yes' : rightAnswer = 'no';
-    if (answer !== rightAnswer) {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
-      console.log(`Let's try again, ${name}!`);
+    if (isWrong(answer, rightAnswer, name) === 'end') {
       return;
     }
     console.log('Correct!');

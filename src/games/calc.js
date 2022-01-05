@@ -1,34 +1,28 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/prefer-default-export */
-import { getRandomFloat, doRequest } from '../index.js';
+import { getRandomFloat, doRequest, isWrong } from '../index.js';
 
-const gameCalc = (name) => {
+const resultCalculator = (operands, operator) => {
+  if (operator === '+') {
+    return operands[0] + operands[1];
+  }
+  if (operator === '-') {
+    return operands[0] - operands[1];
+  }
+  return operands[0] * operands[1];
+};
+
+export default (name) => {
   const operators = ['+', '-', '*'];
   for (let i = 0; i < 3; i += 1) {
     const random = Math.floor(Math.random() * operators.length);
-    const firstOperand = getRandomFloat(1, 100);
-    const secondOperand = getRandomFloat(1, 100);
+    const operands = [getRandomFloat(1, 100), getRandomFloat(1, 100)];
     const operator = operators[random];
-    let rightAnswer = 0;
-    if (operator === '+') {
-      rightAnswer = firstOperand + secondOperand;
-    }
-    if (operator === '-') {
-      rightAnswer = firstOperand - secondOperand;
-    }
-    if (operator === '*') {
-      rightAnswer = firstOperand * secondOperand;
-    }
-    console.log(`Question: ${firstOperand} ${operator} ${secondOperand}`);
+    const rightAnswer = resultCalculator(operands, operator);
+    console.log(`Question: ${operands[0]} ${operator} ${operands[1]}`);
     const answer = doRequest('Your answer: ');
-    if (Number(answer) !== rightAnswer) {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
-      console.log(`Let's try again, ${name}!`);
+    if (isWrong(answer, rightAnswer, name) === 'end') {
       return;
     }
     console.log('Correct!');
   }
   console.log(`Congratulations, ${name}!`);
 };
-
-export { gameCalc };

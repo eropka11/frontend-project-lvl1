@@ -9,6 +9,17 @@ const greetings = () => {
   return name;
 };
 
+const isWrong = (answer, rightAnswer, playerName) => {
+  if (Number(answer) !== rightAnswer) {
+    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
+    console.log(`Let's try again, ${playerName}!`);
+    return 'end';
+  }
+  return '';
+};
+
 const getRandomFloat = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
-export { doRequest, getRandomFloat, greetings };
+export {
+  doRequest, getRandomFloat, greetings, isWrong,
+};

@@ -1,36 +1,20 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable import/extensions */
-import { getRandomFloat, doRequest } from '../index.js';
+import { getRandomFloat, doRequest, isWrong } from '../index.js';
 
-const gameGcd = (name) => {
+export default (name) => {
   for (let i = 0; i < 3; i += 1) {
-    const firstNum = getRandomFloat(1, 100);
-    const secondNum = getRandomFloat(1, 100);
-    let biggerNum = 0;
-    let smallerNum = 0;
-    if (firstNum >= secondNum) {
-      biggerNum = firstNum;
-      smallerNum = secondNum;
-    } else {
-      smallerNum = firstNum;
-      biggerNum = secondNum;
-    }
-    console.log(`Question: ${smallerNum} ${biggerNum}`);
+    const numbers = [getRandomFloat(1, 100), getRandomFloat(1, 100)];
+    console.log(`Question: ${numbers[0]} ${numbers[1]}`);
     const answer = doRequest('Your answer: ');
     let rightAnswer = 1;
-    for (let divisor = 2; divisor <= smallerNum; divisor += 1) {
-      if (smallerNum % divisor === 0 && biggerNum % divisor === 0) {
+    for (let divisor = 2; divisor <= numbers[0] || divisor <= numbers[1]; divisor += 1) {
+      if (numbers[0] % divisor === 0 && numbers[1] % divisor === 0) {
         rightAnswer = divisor;
       }
     }
-    if (Number(answer) !== rightAnswer) {
-      console.log(`'${answer}' is a wrong answer ;(. Correct answer was '${rightAnswer}'.`);
-      console.log(`Let's try again, ${name}!`);
+    if (isWrong(answer, rightAnswer, name) === 'end') {
       return;
     }
     console.log('Correct!');
   }
   console.log(`Congratulations, ${name}!`);
 };
-
-export { gameGcd };
