@@ -1,8 +1,6 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable import/extensions */
 import { getRandomFloat, doRequest, isWrong } from '../index.js';
 
-const gameProgression = (name) => {
+export default (name) => {
   for (let i = 0; i < 3; i += 1) {
     const progressionStep = getRandomFloat(1, 15);
     const progressionLength = getRandomFloat(5, 12);
@@ -14,9 +12,8 @@ const gameProgression = (name) => {
     const rightAnswer = question[hiddenNum];
     question[hiddenNum] = '..';
     let shownQuestion = '';
-    // eslint-disable-next-line no-restricted-syntax
-    for (const number of question) {
-      shownQuestion += `${String(number)} `;
+    for (let index = 0; i < question.length; i += 1) {
+      shownQuestion += `${String(question[index])} `;
     }
     console.log(`Question: ${shownQuestion}`);
     const answer = doRequest('Your answer: ');
@@ -27,5 +24,3 @@ const gameProgression = (name) => {
   }
   console.log(`Congratulations, ${name}!`);
 };
-
-export { gameProgression };

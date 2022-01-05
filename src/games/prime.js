@@ -1,8 +1,6 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable import/extensions */
 import { getRandomFloat, doRequest, isWrong } from '../index.js';
 
-const gamePrime = (name) => {
+export default (name) => {
   for (let i = 0; i < 3; i += 1) {
     const random = getRandomFloat(1, 100);
     console.log(`Question: ${random}`);
@@ -20,5 +18,3 @@ const gamePrime = (name) => {
   }
   console.log(`Congratulations, ${name}!`);
 };
-
-export { gamePrime };
