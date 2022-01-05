@@ -12,7 +12,7 @@ export default (name) => {
     const rightAnswer = question[hiddenNum];
     question[hiddenNum] = '..';
     let shownQuestion = '';
-    for (let index = 0; i < question.length; i += 1) {
+    for (let index = 0; index < question.length; index += 1) {
       shownQuestion += `${String(question[index])} `;
     }
     console.log(`Question: ${shownQuestion}`);
