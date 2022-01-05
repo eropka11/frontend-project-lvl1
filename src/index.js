@@ -10,7 +10,7 @@ const greetings = () => {
 };
 
 const isWrong = (answer, rightAnswer, playerName) => {
-  if (Number(answer) !== rightAnswer) {
+  if (answer !== rightAnswer) {
     console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
     console.log(`Let's try again, ${playerName}!`);
     return 'end';

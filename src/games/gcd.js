@@ -11,7 +11,7 @@ export default (name) => {
         rightAnswer = divisor;
       }
     }
-    if (isWrong(answer, rightAnswer, name) === 'end') {
+    if (isWrong(Number(answer), rightAnswer, name) === 'end') {
       return;
     }
     console.log('Correct!');

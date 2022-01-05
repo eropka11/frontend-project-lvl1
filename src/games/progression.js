@@ -20,7 +20,7 @@ const gameProgression = (name) => {
     }
     console.log(`Question: ${shownQuestion}`);
     const answer = doRequest('Your answer: ');
-    if (isWrong(answer, rightAnswer, name) === 'end') {
+    if (isWrong(Number(answer), rightAnswer, name) === 'end') {
       return;
     }
     console.log('Correct!');

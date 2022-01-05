@@ -19,7 +19,7 @@ export default (name) => {
     const rightAnswer = resultCalculator(operands, operator);
     console.log(`Question: ${operands[0]} ${operator} ${operands[1]}`);
     const answer = doRequest('Your answer: ');
-    if (isWrong(answer, rightAnswer, name) === 'end') {
+    if (isWrong(Number(answer), rightAnswer, name) === 'end') {
       return;
     }
     console.log('Correct!');
